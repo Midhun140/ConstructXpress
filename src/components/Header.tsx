@@ -17,6 +17,7 @@ interface HeaderProps {
   onOpenCalculator: () => void;
   onOpenTracker: () => void;
   activeOrderCount: number;
+  onSwitchToVendorView: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -33,6 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenCalculator,
   onOpenTracker,
   activeOrderCount,
+  onSwitchToVendorView,
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-[#0b0f17]/95 backdrop-blur-md border-b border-slate-800 text-white">
@@ -141,6 +143,15 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Actions: Tracker & Cart */}
         <div className="flex items-center gap-3">
+          <button
+            onClick={onSwitchToVendorView}
+            className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-amber-400 border border-amber-500/40 hover:border-amber-400 px-3 py-2 rounded-xl text-xs font-bold transition shadow-sm"
+            title="Switch to Fleet Partner & Material Vendor Hub"
+          >
+            <Truck className="w-3.5 h-3.5 text-amber-500" />
+            <span className="hidden sm:inline">Vendor</span> Hub
+          </button>
+
           <button
             onClick={onOpenTracker}
             className="hidden sm:flex items-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 px-3 py-2 rounded-xl text-xs font-medium text-slate-200 transition"

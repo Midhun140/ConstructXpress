@@ -493,3 +493,215 @@ export const MOCK_SITE_LOCATIONS = [
     phone: '+91 99887 76655'
   }
 ];
+
+export const MOCK_VENDOR_PROFILE = {
+  companyName: 'Apex Heavy Fleet & Logistics Pvt Ltd',
+  hubZone: 'Hub Alpha (Sector 62 Outer Expressway)',
+  partnerTier: 'Platinum Certified' as const,
+  slaScorePercent: 98.4,
+  avgMobilizationMinutes: 7.2,
+  activeFleetCount: 6,
+  totalFleetCount: 8,
+  todayEarnings: 1420,
+  pendingEscrowPayout: 3890,
+  lifetimeCompletedJobs: 418
+};
+
+export const MOCK_OPERATORS = [
+  {
+    id: 'op-1',
+    name: 'Rajesh Kumar',
+    experienceYears: 14,
+    certifications: ['Heavy Crane Rigging Class 1', 'Hydraulic Safety Certified'],
+    licenseNo: 'DL-04-2010-0982',
+    phone: '+91 98112 34567',
+    isAvailable: true,
+    rating: 4.95
+  },
+  {
+    id: 'op-2',
+    name: 'Vikram Solanki',
+    experienceYears: 9,
+    certifications: ['JCB 3DX Master Operator', 'Excavator 20T License'],
+    licenseNo: 'HR-26-2015-7712',
+    phone: '+91 97223 45678',
+    isAvailable: false,
+    rating: 4.88
+  },
+  {
+    id: 'op-3',
+    name: 'Anand Verma',
+    experienceYears: 7,
+    certifications: ['Heavy Commercial Tipper Class 2', 'Defensive Driving'],
+    licenseNo: 'UP-16-2017-3319',
+    phone: '+91 99334 56789',
+    isAvailable: true,
+    rating: 4.82
+  },
+  {
+    id: 'op-4',
+    name: 'Sunita Rao (Dispatch Controller)',
+    experienceYears: 8,
+    certifications: ['OSHA Logistics Lead', 'Hazardous Materials Handling'],
+    licenseNo: 'DL-01-2016-5541',
+    phone: '+91 98445 67890',
+    isAvailable: true,
+    rating: 4.98
+  }
+];
+
+export const INITIAL_FLEET_ASSETS = [
+  {
+    id: 'ast-1',
+    name: 'SANY 50-Ton Mobile Crane',
+    regNumber: 'DL-01-CR-5021',
+    category: 'crane' as const,
+    status: 'ready' as const,
+    operatorName: 'Rajesh Kumar',
+    operatorPhone: '+91 98112 34567',
+    fuelLevelPercent: 92,
+    engineHours: 1240,
+    dailyRate: 1400,
+    hourlyRate: 350,
+    locationHub: 'Hub Alpha Bay 1',
+    telematicsHealth: 'excellent' as const
+  },
+  {
+    id: 'ast-2',
+    name: 'JCB 3DX Super Backhoe Loader',
+    regNumber: 'DL-04-JCB-9102',
+    category: 'jcb' as const,
+    status: 'on_job' as const,
+    operatorName: 'Vikram Solanki',
+    operatorPhone: '+91 97223 45678',
+    fuelLevelPercent: 68,
+    engineHours: 2150,
+    dailyRate: 750,
+    hourlyRate: 120,
+    currentSite: 'Site #4 - Metro Express Line A',
+    locationHub: 'On Site (En-Route)',
+    telematicsHealth: 'good' as const
+  },
+  {
+    id: 'ast-3',
+    name: 'Caterpillar 320 Next-Gen Excavator',
+    regNumber: 'HR-26-CAT-3200',
+    category: 'excavator' as const,
+    status: 'ready' as const,
+    operatorName: 'Anand Verma',
+    operatorPhone: '+91 99334 56789',
+    fuelLevelPercent: 85,
+    engineHours: 980,
+    dailyRate: 1200,
+    hourlyRate: 240,
+    locationHub: 'Hub Alpha Bay 3',
+    telematicsHealth: 'excellent' as const
+  },
+  {
+    id: 'ast-4',
+    name: 'TATA Signa 10-Wheeler Tipper (18 m³)',
+    regNumber: 'DL-07-TP-1845',
+    category: 'dumper' as const,
+    status: 'ready' as const,
+    operatorName: 'Balwant Singh',
+    operatorPhone: '+91 99445 11223',
+    fuelLevelPercent: 78,
+    engineHours: 3410,
+    dailyRate: 600,
+    hourlyRate: 180,
+    locationHub: 'Hub Alpha Tipper Staging',
+    telematicsHealth: 'good' as const
+  },
+  {
+    id: 'ast-5',
+    name: 'Bobcat S450 Skid Steer Loader',
+    regNumber: 'UP-16-BC-4412',
+    category: 'jcb' as const,
+    status: 'ready' as const,
+    operatorName: 'Mohit Rawat',
+    operatorPhone: '+91 98119 88776',
+    fuelLevelPercent: 88,
+    engineHours: 720,
+    dailyRate: 480,
+    hourlyRate: 95,
+    locationHub: 'Hub Alpha Bay 4',
+    telematicsHealth: 'excellent' as const
+  },
+  {
+    id: 'ast-6',
+    name: 'HAMM 311 Soil Compactor Roller 11T',
+    regNumber: 'DL-03-RL-8821',
+    category: 'jcb' as const,
+    status: 'maintenance' as const,
+    fuelLevelPercent: 45,
+    engineHours: 4120,
+    dailyRate: 650,
+    hourlyRate: 150,
+    locationHub: 'Service Workshop Bay 2',
+    telematicsHealth: 'check_needed' as const
+  }
+];
+
+export const INITIAL_DISPATCH_JOBS = [
+  {
+    id: 'job-901',
+    orderId: 'CX-88421',
+    siteName: 'Site #4 - Metro Express Line A',
+    siteAddress: 'Sector 62, Phase 3 Extension Zone',
+    contactPerson: 'Eng. Vikram Sharma',
+    contactPhone: '+91 98765 43210',
+    itemTitle: 'SANY 50-Ton Mobile Hydraulic Crane',
+    itemType: 'vehicle' as const,
+    quantityDesc: '1 Unit • 1 Shift (4 hrs) • Certified Operator Required',
+    payoutAmount: 350,
+    rushBonus: 45,
+    urgencyLevel: 'high_45min' as const,
+    slaSecondsRemaining: 540, // 9 mins remaining to mobilize wheels
+    status: 'pending_acceptance' as const,
+    assignedAssetId: 'ast-1',
+    assignedOperatorName: 'Rajesh Kumar',
+    estimatedSiteDistanceKm: 6.8,
+    timestamp: 'Just now'
+  },
+  {
+    id: 'job-902',
+    orderId: 'CX-88390',
+    siteName: 'Site #12 - Horizon IT Tower Complex',
+    siteAddress: 'Plot 4B, Outer Ring Road Tech Corridor',
+    contactPerson: 'Contractor Rajesh Mehta',
+    contactPhone: '+91 91234 56789',
+    itemTitle: 'JCB 3DX Super Backhoe Loader',
+    itemType: 'vehicle' as const,
+    quantityDesc: '1 Unit • 8 Hours • Driver Vikram Assigned',
+    payoutAmount: 720,
+    rushBonus: 60,
+    urgencyLevel: 'high_45min' as const,
+    slaSecondsRemaining: 1820,
+    status: 'en_route' as const,
+    assignedAssetId: 'ast-2',
+    assignedOperatorName: 'Vikram Solanki',
+    estimatedSiteDistanceKm: 4.2,
+    timestamp: '18 mins ago'
+  },
+  {
+    id: 'job-903',
+    orderId: 'CX-88214',
+    siteName: 'Site #8 - GreenValley Residential Township',
+    siteAddress: 'Highway KM 14, North Bypass Road',
+    contactPerson: 'Project Manager Sunita Rao',
+    contactPhone: '+91 99887 76655',
+    itemTitle: 'UltraTech Super 53 Grade Cement (100 Bags)',
+    itemType: 'material' as const,
+    quantityDesc: '100 Bags (50kg each) • Tipper Truck #DL-07',
+    payoutAmount: 580,
+    rushBonus: 35,
+    urgencyLevel: 'high_45min' as const,
+    slaSecondsRemaining: 0,
+    status: 'completed' as const,
+    assignedAssetId: 'ast-4',
+    assignedOperatorName: 'Balwant Singh',
+    estimatedSiteDistanceKm: 9.1,
+    timestamp: '3 hours ago'
+  }
+];
+

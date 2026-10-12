@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { MainTab, Product, CartItem, Order, SiteLocation } from './types';
+import { MainTab, Product, CartItem, Order, SiteLocation, AppViewMode } from './types';
 import { INITIAL_PRODUCTS, MOCK_SITE_LOCATIONS } from './data/mockData';
 import { Header } from './components/Header';
 import { TabNavigation } from './components/TabNavigation';
@@ -9,11 +9,15 @@ import { ProductModal } from './components/ProductModal';
 import { CartDrawer } from './components/CartDrawer';
 import { LiveOrderTrackerModal } from './components/LiveOrderTrackerModal';
 import { MaterialCalculatorModal } from './components/MaterialCalculatorModal';
+import { VendorPortal } from './components/VendorPortal';
 import { Footer } from './components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Sparkles, Filter, AlertCircle, ShoppingBag, Truck } from 'lucide-react';
 
 export const App: React.FC = () => {
+  // View Mode: Contractor vs Vendor Portal
+  const [viewMode, setViewMode] = useState<AppViewMode>('contractor');
+
   // State
   const [activeTab, setActiveTab] = useState<MainTab>('vehicles');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
@@ -155,6 +159,12 @@ export const App: React.FC = () => {
     setIsCartOpen(true);
   };
 
+  if (viewMode === 'vendor') {
+    return (
+      <VendorPortal onSwitchToContractorView={() => setViewMode('contractor')} />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#0b0f17] text-slate-100 flex flex-col font-sans">
       {/* Header */}
@@ -175,6 +185,7 @@ export const App: React.FC = () => {
         onOpenCalculator={() => setIsCalculatorOpen(true)}
         onOpenTracker={() => setIsTrackerOpen(true)}
         activeOrderCount={activeOrder ? 1 : 0}
+        onSwitchToVendorView={() => setViewMode('vendor')}
       />
 
       {/* Hero Section */}

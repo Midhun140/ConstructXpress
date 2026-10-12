@@ -1,4 +1,5 @@
 export type MainTab = 'vehicles' | 'materials' | 'tools';
+export type AppViewMode = 'contractor' | 'vendor';
 
 export type VehicleType = 'jcb' | 'crane' | 'excavator' | 'dumper' | 'roller' | 'paver' | 'concrete_mixer';
 export type MaterialCategory = 'cement' | 'sand' | 'steel' | 'bricks' | 'aggregates' | 'chemicals';
@@ -62,4 +63,70 @@ export interface Order {
   createdAt: string;
   estimatedDeliveryTime: string; // timestamp or remaining mins
   remainingSeconds: number;
+}
+
+// ==================== VENDOR & DISTRIBUTOR PORTAL TYPES ====================
+
+export type AssetStatus = 'ready' | 'mobilizing' | 'on_job' | 'maintenance';
+
+export interface FleetAsset {
+  id: string;
+  name: string;
+  regNumber: string;
+  category: 'jcb' | 'crane' | 'excavator' | 'dumper' | 'materials' | 'tools';
+  status: AssetStatus;
+  operatorName?: string;
+  operatorPhone?: string;
+  fuelLevelPercent: number;
+  engineHours: number;
+  dailyRate: number;
+  hourlyRate: number;
+  currentSite?: string;
+  locationHub: string;
+  telematicsHealth: 'excellent' | 'good' | 'check_needed';
+}
+
+export interface OperatorProfile {
+  id: string;
+  name: string;
+  experienceYears: number;
+  certifications: string[];
+  licenseNo: string;
+  phone: string;
+  isAvailable: boolean;
+  rating: number;
+}
+
+export interface DispatchJob {
+  id: string;
+  orderId: string;
+  siteName: string;
+  siteAddress: string;
+  contactPerson: string;
+  contactPhone: string;
+  itemTitle: string;
+  itemType: 'vehicle' | 'material' | 'tool';
+  quantityDesc: string;
+  payoutAmount: number;
+  rushBonus: number;
+  urgencyLevel: 'high_45min' | 'standard';
+  slaSecondsRemaining: number;
+  status: 'pending_acceptance' | 'mobilizing' | 'en_route' | 'on_site_active' | 'completed';
+  assignedAssetId?: string;
+  assignedOperatorName?: string;
+  estimatedSiteDistanceKm: number;
+  timestamp: string;
+}
+
+export interface VendorProfile {
+  companyName: string;
+  hubZone: string;
+  partnerTier: 'Gold Fleet Partner' | 'Platinum Certified' | 'Authorized Stockist';
+  slaScorePercent: number;
+  avgMobilizationMinutes: number;
+  activeFleetCount: number;
+  totalFleetCount: number;
+  todayEarnings: number;
+  pendingEscrowPayout: number;
+  lifetimeCompletedJobs: number;
 }
