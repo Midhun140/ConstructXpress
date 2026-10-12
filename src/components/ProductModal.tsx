@@ -67,6 +67,9 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               src={product.image}
               alt={product.name}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80&w=800';
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#111723] via-[#111723]/30 to-transparent" />
 

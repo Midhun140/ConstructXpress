@@ -45,6 +45,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80&w=800';
+            }}
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#131a28] via-transparent to-black/40" />
